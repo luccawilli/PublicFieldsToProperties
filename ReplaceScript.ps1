@@ -1,5 +1,5 @@
 $path = "C:\ProgrameP\Main\ReleaseCandidate\RC\Perigon\PerigonService\PerigonMobile\DTO"
-$pattern = "(public) ([A-Za-z0-9<>\?]*)(( )*) ([A-Za-z0-9]*)((;)|( =))"
+$pattern = "(public) ([A-Za-z0-9<>\?\[\]]*)(( )*) ([A-Za-z0-9]*)((;)|( =))"
 $files = Get-Childitem -Path $path -Filter "*.cs" -Recurse
 foreach ($f in $files){
     $content = Get-Content $f.FullName
