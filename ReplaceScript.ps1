@@ -1,8 +1,8 @@
-$path = "C:\root-git\perigon\PerigonDesktop"
+$path = "C:\root-git\perigonAhab\PerigonDesktop"
 $pattern = "(public)(( static)|()) ([A-Za-z0-9._<>\?\[\]]*)(( )*) ([A-Za-z0-9_-]*)((;)|( = ))"
 $files = Get-Childitem -Path $path -Filter "*.cs" -Recurse -Exclude "*.resx.cs"
 foreach ($f in $files){
-    $content = Get-Content $f.FullName
+    $content = Get-Content $f.FullName -Encoding utf8
     $match = $content -match $pattern
     if($match){
         foreach ($m in $match){
@@ -17,6 +17,6 @@ foreach ($f in $files){
 			}
             $content = $content -replace [regex]::escape($m),$new
         }
-        Set-Content -Path $f.FullName -Value $content
+        Set-Content -Path $f.FullName -Value $content -Encoding utf8
     }    
 }
